@@ -109,7 +109,7 @@ window.INVITE = {
       events: [
         { id: 'sangeet', icon: 'dholak', accent: '#1B5A73', titles: [{ name: 'कार्निवाल एवं संगीत' }], time: 'सुबह 11:00 बजे से', venue: 'मीरा मोहन रिट्रीट' },
         { id: 'baraat', icon: 'ghodi', accent: '#B23A1E', titles: [{ name: 'वर निकासी एवं बारात' }], time: 'सायं 5:00 बजे से', venue: 'निवास स्थान राम मंदिर के सामने' },
-        { id: 'thirakte-kadam', icon: 'ghungroo', accent: '#4E3484', titles: [{ name: 'थिरकते कदम' }], time: 'रात्रि 9:00 बजे से', venue: 'मीरा मोहन रिट्रीट' },
+        { id: 'thirakte-kadam', icon: 'disco', accent: '#4E3484', titles: [{ name: 'थिरकते कदम' }], time: 'रात्रि 9:00 बजे से', venue: 'मीरा मोहन रिट्रीट' },
       ],
     },
     {
@@ -147,6 +147,12 @@ window.INVITE = {
     heading: 'बाल मनुहार',
     lines: ['थोड़ी सी सर्दी है, सर्दी से ना घबराना,', 'हमारे चाचा की शादी में जलूल-जलूल आना...'],
     signature: 'वेदार्थ, सार्थ',
+  },
+
+  closing: {
+    line: 'आपकी उपस्थिति ही हमारी खुशियों को पूर्ण करेगी',
+    sub: 'सपरिवार पधारकर वर-वधू को अपना स्नेह और आशीर्वाद दें',
+    sign: 'सप्रेम, नेमा परिवार',
   },
 
   footer: {

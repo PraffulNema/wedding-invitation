@@ -15,7 +15,7 @@ Upload the whole `website-static` folder, keeping its structure, to any static h
 | Path | What it holds |
 | --- | --- |
 | `js/content.js` | Every visible word, dates, map link, calendar times. Edit text here only. |
-| `js/icons.js` | Ceremony icons (kalash, diya, mandap, mamera thaal, dholak, safa, ghungroo, havan kund, cloche) |
+| `js/icons.js` | Full-colour ceremony illustrations (kalash, aarti thali, mandap, mamera thaal, dholak, dulha on ghodi, mirror ball, havan kund, bhoj thali) |
 | `js/main.js` | Renders the page; Patrika opening, petal shower, toran, countdown, snow, music, reload reset, scroll reveals |
 | `css/styles.css` | Royal Heritage colours, fonts and layout |
 | `assets/audio/saibo.mp3` | Background music (loops; starts only after the tap) |

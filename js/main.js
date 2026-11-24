@@ -104,12 +104,7 @@
     '<path vector-effect="non-scaling-stroke" opacity="0.55" d="M26 300 V124 C 26 82 58 56 100 32 C 142 56 174 82 174 124 V300 Z"/></g></svg>';
 
   function icon(name, cls) {
-    return (
-      '<svg class="' + (cls || 'ev-icon') + '" viewBox="0 0 64 64" aria-hidden="true">' +
-      '<g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' +
-      (ICONS[name] || '') +
-      '</g></svg>'
-    );
+    return '<svg class="' + (cls || 'ev-icon') + '" viewBox="0 0 64 64" aria-hidden="true">' + (ICONS[name] || '') + '</svg>';
   }
 
   var PIN =
@@ -277,7 +272,7 @@
       '<section class="section section-reception" id="reception">' +
       '<div class="lanterns" aria-hidden="true"><span class="lantern"></span><span class="lantern"></span></div>' +
       '<div class="paper paper-reception" data-reveal>' + fourCorners('paper-corner') +
-      '<div class="ev-window reception-window" style="--accent:#5C1020"><span class="ev-finial" aria-hidden="true"></span>' + icon('cloche') + '</div>' +
+      '<div class="ev-window reception-window" style="--accent:#5C1020"><span class="ev-finial" aria-hidden="true"></span>' + icon('thali') + '</div>' +
       '<h2 class="reception-title">' + esc(R.title[0]) + '<span>' + esc(R.title[1]) + '</span></h2>' + divider('paper-divider') +
       '<dl class="reception-rows">' +
       R.rows.map(function (r) {
@@ -328,6 +323,10 @@
     var F = I.footer;
     return (
       '<footer class="site-footer"><div class="footer-garland" aria-hidden="true"></div>' +
+      '<div class="closing" data-reveal>' + diya() +
+      '<p class="closing-line">' + esc(I.closing.line) + '</p>' +
+      '<p class="closing-sub">' + esc(I.closing.sub) + '</p>' + divider('closing-divider') +
+      '<p class="closing-sign">' + esc(I.closing.sign) + '</p></div>' +
       '<img class="footer-logo" src="' + I.MONOGRAM_SRC + '" alt="" data-reveal><div class="footer-grid">' +
       '<div class="footer-block" data-reveal><p class="footer-label">' + esc(F.senderLabel) + '</p>' +
       F.senders.map(function (s) {
@@ -567,11 +566,6 @@
     '<main>' + renderHero() + renderInvitation() + renderEvents() + renderReception() + renderManuhar() + '</main>' + renderFooter();
   stage.innerHTML = renderPatrika();
   $('#add-to-calendar').addEventListener('click', addToCalendar);
-
-  // pathLength lets every icon line "draw itself" when its card is revealed
-  $all('.ev-icon *', site).forEach(function (el) {
-    if (/^(path|circle|ellipse|rect|line)$/.test(el.tagName)) el.setAttribute('pathLength', '1');
-  });
 
   startCountdown();
   sparkles();
