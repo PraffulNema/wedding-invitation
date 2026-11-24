@@ -252,7 +252,7 @@
 
   function renderGallery() {
     var G = I.photos.gallery;
-    var items = G.items.map(function (it, i) {
+    function card(it, i) {
       return (
         '<li class="g-item' + (i === 0 ? ' is-feature' : '') + '" data-reveal style="--tilt:' + (i % 3 === 0 ? -1.4 : i % 3 === 1 ? 1.1 : -0.6) + 'deg">' +
         '<button type="button" class="g-card" data-i="' + i + '" aria-label="' + esc(G.openLabel) + ' ' + (i + 1) + '">' +
@@ -264,13 +264,25 @@
         (it.caption ? '<span class="g-caption">' + esc(it.caption) + '</span>' : '') +
         '</span></button></li>'
       );
-    }).join('');
+    }
+    // Fixed placement: the first photo is featured, the rest alternate left/right.
+    // (No automatic column balancing, so photos never jump between columns while loading.)
+    var left = '';
+    var right = '';
+    G.items.forEach(function (it, i) {
+      if (i === 0) return;
+      if (i % 2 === 1) left += card(it, i);
+      else right += card(it, i);
+    });
     return (
       '<section class="section section-gallery" id="gallery">' +
       '<header class="section-header" data-reveal>' + lotus('header-lotus') +
       '<h2 class="section-title">' + esc(G.heading) + '</h2>' +
       (G.sub ? '<p class="section-sub">' + esc(G.sub) + '</p>' : '') + divider() + '</header>' +
-      '<ul class="g-grid">' + items + '</ul></section>'
+      '<div class="g-grid">' +
+      (G.items.length ? '<ul class="g-feature-row">' + card(G.items[0], 0) + '</ul>' : '') +
+      '<div class="g-cols"><ul class="g-col">' + left + '</ul><ul class="g-col g-col-right">' + right + '</ul></div>' +
+      '</div></section>'
     );
   }
 
@@ -594,7 +606,7 @@
       anim(img, [{ opacity: 0, transform: 'scale(0.96)' }, { opacity: 1, transform: 'none' }], 450, 0, EASE.out, 'none');
     }
     function openBox(i) {
-      var frame = cards[i] && $('.g-img', cards[i]);
+      var frame = $('.g-card[data-i="' + i + '"] .g-img', grid);
       if (frame && frame.classList.contains('is-missing')) return; // nothing to enlarge yet
       lastFocus = document.activeElement;
       box.hidden = false;

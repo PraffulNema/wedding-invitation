@@ -2251,23 +2251,36 @@ p {
 }
 
 .g-grid {
-  list-style: none;
-  max-width: 1000px;
+  max-width: 880px;
   margin: 0 auto;
+}
+
+.g-feature-row,
+.g-col {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.g-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
   padding: 0 4px;
-  columns: 2;
-  column-gap: 16px;
+}
+
+/* the right column starts a little lower, for a relaxed album feel */
+.g-col-right {
+  padding-top: 34px;
 }
 
 .g-item {
-  break-inside: avoid;
   margin-bottom: 18px;
-  /* keep the tilt on the card so the scroll-reveal transform on the item stays free */
 }
 
-/* The first gallery photo is featured across both columns */
+/* The first gallery photo is featured on its own row */
 .g-item.is-feature {
-  column-span: all;
   max-width: 460px;
   margin: 0 auto 28px;
 }
@@ -2391,13 +2404,16 @@ p {
 }
 
 @media (min-width: 760px) {
-  .g-grid {
-    columns: 3;
-    column-gap: 24px;
+  .g-cols {
+    gap: 28px;
+  }
+
+  .g-col-right {
+    padding-top: 60px;
   }
 
   .g-item {
-    margin-bottom: 26px;
+    margin-bottom: 28px;
   }
 
   .g-mat {
